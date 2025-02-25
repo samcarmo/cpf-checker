@@ -144,6 +144,6 @@ function commmonCheck($check)
     return $check;
 }
 
-dd($state)
+var_dump($state)
 
 ?>
