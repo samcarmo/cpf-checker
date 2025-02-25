@@ -48,7 +48,7 @@ if (isset($_POST['cpf'])) {
         $formatedCpf = $_POST['cpf'];
     }
 
-    $state = StatesEnum::from($cpf[8);
+    $state = StatesEnum::from($cpf[8]);
 }
 ?>
 
