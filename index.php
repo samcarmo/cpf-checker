@@ -1,6 +1,37 @@
 <?php
 $formatedCpf = null;
 $formatArray = array(3, 6);
+
+enum StatesEnum: int
+{
+    case STATES_1 = 1;
+    case STATES_2 = 2;
+    case STATES_3 = 3;
+    case STATES_4 = 4;
+    case STATES_5 = 5;
+    case STATES_6 = 6;
+    case STATES_7 = 7;
+    case STATES_8 = 8;
+    case STATES_9 = 9;
+    case STATES_0 = 0;
+
+    public function getStates(): string
+    {
+        return match ($this) {
+            self::STATES_1 => 'DF, GO, MS, MT, TO',
+            self::STATES_2 => 'AC, AM, AP, PA, RO, RR',
+            self::STATES_3 => 'CE, MA, PI',
+            self::STATES_4 => 'AL, PB, PE, RN',
+            self::STATES_5 => 'BA, SE',
+            self::STATES_6 => 'MG',
+            self::STATES_7 => 'ES, RJ',
+            self::STATES_8 => 'SP',
+            self::STATES_9 => 'PR, SC',
+            self::STATES_0 => 'RS',
+        };
+    }
+}
+
 if (isset($_POST['cpf'])) {
     $cpf = trim($_POST['cpf']);
     $cpf = preg_replace("/[^0-9]/", "", $cpf);
@@ -16,6 +47,8 @@ if (isset($_POST['cpf'])) {
     } else {
         $formatedCpf = $_POST['cpf'];
     }
+
+    $state = StatesEnum::from($cpf[8);
 }
 ?>
 
@@ -41,7 +74,7 @@ if (isset($_POST['cpf'])) {
         <?php
         if (isset($_POST['cpf'])) {
             if (cpfChecker($_POST['cpf'])) {
-                echo '<p class="valid">This is a valid CPF</p>';
+                echo "<p class='valid'>This is a valid CPF from $state</p>";
             } else {
                 echo '<p class="invalid">This CPF is not valid</p>';
             };
