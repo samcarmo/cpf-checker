@@ -74,7 +74,7 @@ if (isset($_POST['cpf'])) {
         <?php
         if (isset($_POST['cpf'])) {
             if (cpfChecker($_POST['cpf'])) {
-                echo "<p class='valid'>This is a valid CPF from </p>";
+                echo "<p class='valid'>This is a valid CPF from $states</p>";
             } else {
                 echo '<p class="invalid">This CPF is not valid</p>';
             };
@@ -143,7 +143,5 @@ function commmonCheck($check)
     }
     return $check;
 }
-
-var_dump($state)
 
 ?>
